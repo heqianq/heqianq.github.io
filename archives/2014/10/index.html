@@ -61,6 +61,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-file" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/04/file/" class="article-date">
+  <time datetime="2014-10-04T05:00:55.000Z" itemprop="datePublished">Oct 4 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: MAC上搭建hexo极简指南<br>date: 2014-10-04 12:51:08</p>
+<h2 id="tags:博客搭建">tags:博客搭建</h2>
+<p>Mac上搭建hexo极简指南</p>
+<p>1.安装nvm(node.js的版本管理工具）</p>
+<p>$ wget -qO- <a href="https://raw.github.com/creationix/nvm/master/install.sh" target="_blank" rel="external">https://raw.github.com/creationix/nvm/master/install.sh</a> | sh</p>
+<p>2.添加如下内容到.zshrc配置文件</p>
+<p>[ -s “/Users/<code>users</code>/.nvm/nvm.sh” ] && . “/Users/<code>users</code>/.nvm/nvm.sh” # This loads nvm</p>
+<p>3.安装node.js(通过nvm安装)</p>
+<p>$ nvm install 0.10</p>
+<p>4.安装hexo（通过npm安装）</p>
+<p>$ npm install -g hexo</p>
+<p>5.创建hexo文件夹，并安装hexo相关组件</p>
+<p>$ hexo init hexo</p>
+<p>$ cd hexo</p>
+<p>$ npm install</p>
+<p>6.本地查看</p>
+<p>输入如下命令后，打开浏览器，并输入localhost:4000来查看</p>
+<p>$ hexo g</p>
+<p>$ hexo s</p>
+<p>7.注册github账号</p>
+<p>8.创建github账号同名repository</p>
+<p>eg:github账号名位dorayox，则创建dorayox.github.io</p>
+<p>9.部署到github上</p>
+<p>如下所示编辑_config.yml</p>
+<p>1 deploy:</p>
+<p>2 type: github</p>
+<p> 3 repository:https:// git@github.com:dorayox/dorayox.github.io.git</p>
+<p>4 branch: master</p>
+<p>10.输入如下命令，完成到github得部署，之后打开浏览器并输入dorayox.github.io来查看</p>
+<p>1 $ hexo g</p>
+<p>2 $ hexo d</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/10/04/file/" data-id="z1i558upawjza6bo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/10/04/hello/" class="article-date">
@@ -88,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/10/04/hello/" data-id="7jlw5j0cw77gzm5a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/10/04/hello/" data-id="yelstrohxqj6167q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wwwheqianqhithuio/">www.heqianq.hithu.io</a></li></ul>
@@ -129,7 +186,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">September 2014</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">September 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -139,6 +196,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/10/04/file/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2014/10/04/hello/">hello</a>
