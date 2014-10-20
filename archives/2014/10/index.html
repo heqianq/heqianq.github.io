@@ -61,6 +61,140 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-predicate" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/20/predicate/" class="article-date">
+  <time datetime="2014-10-20T13:34:35.000Z" itemprop="datePublished">Oct 20 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: predicate<br>date: 2014-10-20 21:28:34</p>
+<h2 id="tags:谓词的基本用法示例">tags:谓词的基本用法示例</h2>
+<p>int main(int argc, const char * argv[])<br>{</p>
+<pre><code>@autoreleasepool {
+
+    <span class="comment">// cocoa中的谓词，原理和用法都类似与SQL中where，相当与其过滤</span>
+
+    <span class="comment">// 0. 定义 (predicateWthFormat:...)</span>
+
+    <span class="comment">// 1. 谓词中的《关系运算符》的使用</span>
+    <span class="built_in">NSArray</span> *numArr = @[@<span class="number">12</span>, @<span class="number">34</span>, @<span class="number">128</span>, @<span class="number">99</span>, @<span class="number">3899</span>, @<span class="number">789</span>];
+
+    <span class="comment">// 1.1 创建谓词对象</span>
+    <span class="comment">// 过滤数组中大于100的数字</span>
+    <span class="comment">// 关系运算符：>,<,>=,<=,==,!=</span>
+    <span class="comment">// 谓词中，self代表应用谓词逻辑的对象本身</span>
+    NSPredicate *numPredicate = [NSPredicate predicateWithFormat:@<span class="string">"self > 100"</span>];
+
+    <span class="comment">// 1.2 对数组使用谓词进行过滤</span>
+    <span class="built_in">NSArray</span> *numResult = [numArr filteredArrayUsingPredicate:numPredicate];
+    <span class="built_in">NSLog</span>(@<span class="string">">>>1:%@"</span>, numResult);
+
+    <span class="comment">// 2. 谓词中《逻辑运算符》的使用</span>
+    <span class="built_in">NSArray</span> *personArr = @[
+                           [QYPerson  personWithName:@<span class="string">"niuer"</span> andAge:@<span class="number">20</span>],
+                           [QYPerson personWithName:@<span class="string">"zhangsan"</span> andAge:@<span class="number">30</span>],
+                           [QYPerson personWithName:@<span class="string">"lisi"</span> andAge:@<span class="number">40</span>],
+                           [QYPerson personWithName:@<span class="string">"wangwu"</span> andAge:@<span class="number">50</span>],
+                           [QYPerson personWithName:@<span class="string">"zhaoliu"</span> andAge:@<span class="number">60</span>],
+                           [QYPerson personWithName:@<span class="string">"tiANqi"</span> andAge:@<span class="number">70</span>],
+                           ];
+
+    <span class="comment">// 2.1</span>
+    <span class="comment">// 过滤数组中年龄>40，并且名字不等于zhaoliude的对象</span>
+    <span class="comment">// 逻辑运算符：and或者&&代表与逻辑 or或者||代表或逻辑</span>
+    NSPredicate *personPredicate = [NSPredicate predicateWithFormat:@<span class="string">"age > 40 and name != 'zhaoliu'"</span>];
+
+    <span class="comment">// 2.2</span>
+    <span class="built_in">NSArray</span> *personResult = [personArr filteredArrayUsingPredicate:personPredicate];
+    <span class="built_in">NSLog</span>(@<span class="string">">>>2.%@"</span>, personResult);
+
+    <span class="comment">// 2.3</span>
+    <span class="comment">// ALL ANY</span>
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@<span class="string">"ALL age > 50"</span>];
+    <span class="keyword">if</span> ([pre evaluateWithObject:personArr]) {
+        <span class="built_in">NSLog</span>(@<span class="string">"evaluate OK."</span>);
+    } <span class="keyword">else</span> {
+        <span class="built_in">NSLog</span>(@<span class="string">"evaluate NOK."</span>);
+    }
+    pre = [NSPredicate predicateWithFormat:@<span class="string">"ANY age < 50"</span>];
+    <span class="keyword">if</span> ([pre evaluateWithObject:personArr]) {
+        <span class="built_in">NSLog</span>(@<span class="string">">>>evaluate OK."</span>);
+    } <span class="keyword">else</span> {
+        <span class="built_in">NSLog</span>(@<span class="string">">>>evaluate NOK."</span>);
+    }
+
+    <span class="comment">// 3. 谓词中使用范围运算符: IN、BETWEEN</span>
+    <span class="comment">// 年龄在20岁到50岁之间 age >=20 and age <= 50 age, age between{20,50}</span>
+    personPredicate = [NSPredicate predicateWithFormat:@<span class="string">"age in {20, 50}"</span>];
+    personResult = [personArr filteredArrayUsingPredicate:personPredicate];
+    <span class="built_in">NSLog</span>(@<span class="string">">>>3:%@"</span>, personResult);
+
+    <span class="comment">// 4. 字符串使用谓词</span>
+    <span class="comment">// BEGINSWITH、ENDSWITH、CONTAINS [c]不区分大小写 [d]不区分发音符号 [cd]即不也不</span>
+    personPredicate = [NSPredicate predicateWithFormat:@<span class="string">"name beginswith[cd] 'zh'"</span>];
+    personResult = [personArr filteredArrayUsingPredicate:personPredicate];
+    <span class="built_in">NSLog</span>(@<span class="string">">>>4:%@"</span>, personResult);
+
+    personPredicate = [NSPredicate predicateWithFormat:@<span class="string">"name contains[cd] 'an'"</span>];
+    personResult = [personArr filteredArrayUsingPredicate:personPredicate];
+    <span class="built_in">NSLog</span>(@<span class="string">">>>4.2:%@"</span>, personResult);
+
+    <span class="comment">// 5. 谓词中通配符的使用</span>
+    <span class="comment">// ? *</span>
+    <span class="comment">// LIKE 也可以加[cd]</span>
+    <span class="comment">// 过滤数组，取出第三个字母为a的对象</span>
+    personPredicate = [NSPredicate predicateWithFormat:@<span class="string">"name LIKE[cd] '??a*'"</span>];
+    personResult = [personArr filteredArrayUsingPredicate:personPredicate];
+    <span class="built_in">NSLog</span>(@<span class="string">">>>5:%@"</span>, personResult);
+
+    <span class="comment">// 6. 谓词模版</span>
+    <span class="comment">// 6.1 键路径 %K</span>
+    <span class="built_in">NSString</span> *keyPath = @<span class="string">"age"</span>;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@<span class="string">"%K > %@"</span>, keyPath, @<span class="number">30</span>];
+    <span class="keyword">for</span> (QYPerson *person in personArr) {
+        <span class="keyword">if</span> ([predicate evaluateWithObject:person]) {
+            <span class="built_in">NSLog</span>(@<span class="string">"person:%@"</span>, person);
+        }
+    }
+    <span class="comment">// 6.2 变量 $</span>
+    NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@<span class="string">"name == $NAME"</span>];
+    <span class="built_in">NSString</span> *name = @<span class="string">"zhangsan"</span>;
+
+    <span class="built_in">NSDictionary</span> *varDict = @{@<span class="string">"NAME"</span>:name};
+    predicate = [predicateTemplate predicateWithSubstitutionVariables:varDict];
+    <span class="keyword">for</span> (QYPerson *person in personArr) {
+        <span class="keyword">if</span> ([predicate evaluateWithObject:person]) {
+            <span class="built_in">NSLog</span>(@<span class="string">">>>person:%@"</span>, person);
+        }
+    }
+
+
+
+
+
+}
+<span class="keyword">return</span> <span class="number">0</span>;
+</code></pre><p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/10/20/predicate/" data-id="x0yr8pvmm2gnujoq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-file" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/10/04/file/" class="article-date">
@@ -108,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/10/04/file/" data-id="z1i558upawjza6bo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/10/04/file/" data-id="r5x61vzuifmth74l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -145,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/10/04/hello/" data-id="yelstrohxqj6167q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/10/04/hello/" data-id="ecmirjcz10be8dkm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wwwheqianqhithuio/">www.heqianq.hithu.io</a></li></ul>
@@ -186,7 +320,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">September 2014</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">September 2014</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -196,6 +330,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/10/20/predicate/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2014/10/04/file/">(no title)</a>
