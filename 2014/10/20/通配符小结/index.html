@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: 通配符小结date: 2014-10-20 21:59:07
+tags:通配符 正则表达式
+通配符
+“通配符是系统级别的 ⽽而正则表达式需要相关⼯工具和语⾔言的⽀支持: egrep, awk, vi, perl。
+当您键入 ls .txt  命令并按 Enter 后,寻找哪些文件同 .txt 模式相匹配的任务不是由 ls 命令,而 是由 shell 自己完成。这需要对命令行是如何被">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2014/10/20/通配符小结/">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title: 通配符小结date: 2014-10-20 21:59:07
+tags:通配符 正则表达式
+通配符
+“通配符是系统级别的 ⽽而正则表达式需要相关⼯工具和语⾔言的⽀支持: egrep, awk, vi, perl。
+当您键入 ls .txt  命令并按 Enter 后,寻找哪些文件同 .txt 模式相匹配的任务不是由 ls 命令,而 是由 shell 自己完成。这需要对命令行是如何被">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title: 通配符小结date: 2014-10-20 21:59:07
+tags:通配符 正则表达式
+通配符
+“通配符是系统级别的 ⽽而正则表达式需要相关⼯工具和语⾔言的⽀支持: egrep, awk, vi, perl。
+当您键入 ls .txt  命令并按 Enter 后,寻找哪些文件同 .txt 模式相匹配的任务不是由 ls 命令,而 是由 shell 自己完成。这需要对命令行是如何被">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-通配符小结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/10/20/通配符小结/" class="article-date">
+  <time datetime="2014-10-20T14:09:57.000Z" itemprop="datePublished">Oct 20 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: 通配符小结<br>date: 2014-10-20 21:59:07</p>
+<h2 id="tags:通配符_正则表达式">tags:通配符 正则表达式</h2>
+<pre><code>通配符
+</code></pre><p>“通配符是系统级别的 ⽽而正则表达式需要相关⼯工具和语⾔言的⽀支持: egrep, awk, vi, perl。</p>
+<p>当您键入 ls .txt  命令并按 Enter 后,寻找哪些文件同 .txt 模式相匹配的任务不是由 ls 命令,而 是由 shell 自己完成。这需要对命令行是如何被 shell 解析的作进一步解释。</p>
+<h2 id="通配符语法:*">通配符语法:*</h2>
+<ul>
+<li>将与零个或多个字符匹配。这就是说“什么都可以”。例子:</li>
+</ul>
+<pre><code>/etc/g* 与 /etc 中以 g 开头的所有⽂文件匹配。
+
+
+
+
+/tmp/<span class="keyword">my</span><span class="variable">*.</span>txt 与 /tmp 中以 <span class="keyword">my</span> 开头,并且以 .txt 结尾的所有⽂文件匹配。
+</code></pre><p>￼￼<br>            $ ls *.txt</p>
+<pre><code>       readme<span class="preprocessor">.txt</span>  recipes<span class="preprocessor">.txt</span>
+</code></pre><p>￼￼<br>该命令首先被分割成一系列单词(本例中的 ls 和 .txt)。当 shell 在某个单词中发现了 ,它会将 整个单词当作通配模式解析,并用所有相匹配的文件替换它。因此,该命令在执行前就变为 ls readme.txt recipe.txt,而这将得到期望的结果。其余通配符有:</p>
+<h2 id="通配符语法:?">通配符语法:?</h2>
+<p>? 与任何单个字符匹配。例子:</p>
+<p>通配符语法:[] [!]<br>该通配符与 ? 相似,但允许指定得更确切。要使用该通配符,把您想要匹配的所有字符放在 [] 内。结果的表达式将与 [] 中任一字符相匹配。您也可以用 - 来指定范围,甚至还可以组合范 围。</p>
+<p>[…]:同方括号中的任意一个字符相匹配。这些字符可以用字符范围(比如 1-9)或者离散值或同 时使用两者表示。例如:[a-zBE5-7] 同所有 a 到 z 之间的字符和 B、E、5、6、7 相匹配。</p>
+<p>[!…]:与所有不在方括号中的某个字符匹配。例如 [!a-z] 同某个非小写字母相匹配[5];<br>myfile? 与⽂文件名为 myfile 后跟单个字符的任何⽂文件匹配。<br>/tmp/notes?txt 将与 /tmp/notes.txt 和 /tmp/notes_txt 都匹配,如果它们存在。</p>
+<p>￼￼<br>例子:<br>    ￼myfile[12] 将与 myfile1 和 myfile2 匹配。只要当前⺫⽬目录中⾄至少有⼀一个这样的⽂文件存在,该通 配符就可以进⾏行扩展。</p>
+<pre><code>rm myfile[!<span class="number">9</span>] 将删除除 myfile9 之外的名为 myfile 加⼀一个字符的所有⽂文件。
+￼ls /etc/[<span class="number">0</span>-<span class="number">9</span>]* 将列出 /etc 中以数字开头的所有⽂文件。
+ls /tmp/[A-Za-z]* 将列出 /tmp 中以⼤大写字⺟母或⼩小写字⺟母开头的所有⽂文件。
+<span class="list">{c1,c2}</span>:同 c1 或者 c2 相匹配。其中 c1 和 c2 也是通配符。因此,您可以使用 <span class="list">{[0-9]*,[acr]}</span>。
+</code></pre><h2 id="正则表达式">正则表达式</h2>
+<p>1>选择| 竖直分隔符代表选择。</p>
+<pre><code>例如“gray<span class="string">|grey”可以匹配grey或gray。</span>
+</code></pre><p>2>数量限定</p>
+<ul>
+<li>加号代表前面的字符必须至少出现一次。(1次、或多次)。例如,“goo+gle”可以匹 配google、gooogle、goooogle等</li>
+</ul>
+<p>? 问号代表前面的字符最多只可以出现一次。(0次、或1次)。例如,“colou?r”可以匹 配color或者colour</p>
+<ul>
+<li>星号代表前面的字符可以不出现,也可以出现一次或者多次。(0次、或1次、或多 次)。例如,“0*42”可以匹配42、042、0042、00042等。</li>
+</ul>
+<p>3>匹配</p>
+<p> 圆括号可以用来定义操作符的范围和优先度。例如,“gr(a|e)y”等价<br>于“gray|grey”,“(grand)?father”匹配father和grandfather。 </p>
+<p>上述这些构造子都可以自由组合,因此,“H(ae?|b)ndel”和“H(a|ae|b)ndel”是相同的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/10/20/通配符小结/" data-id="vha9s8e1r48y5eya" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2014/10/20/谓词总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/wwwheqianqhithuio/">www.heqianq.hithu.io</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/wwwheqianqhithuio/" style="font-size: NaNpx;">www.heqianq.hithu.io</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10">October 2014</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">September 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/10/20/通配符小结/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/10/20/谓词总结/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/10/20/predicate/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/10/04/file/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2014/10/04/hello/">hello</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 heqianq<br>
+      Powered by <a href="http://zespia.tw/hexo/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+  </div>
+</body>
+</html>
