@@ -5,21 +5,33 @@
   
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: 谓词总结date: 2014-10-20 21:45:54
-tags:谓词小结
-1.">
+  <meta name="description" content="title: 字典和装箱操作date: 2014-10-21 20:20:50
+tags:####NSDictionary ,###NSNumber,###NSNull 
+1 NSDictionary
+1> 创建字典的新语法
+例如：NSDictionary *persons = @{@"zs":p1};
+2> 获取字典中的对象
+例如：Persons *somePerson = persons[@"">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/2014/10/20/谓词总结/">
+<meta property="og:url" content="http://yoursite.com/2014/10/21/字典和装箱操作/">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="title: 谓词总结date: 2014-10-20 21:45:54
-tags:谓词小结
-1.">
+<meta property="og:description" content="title: 字典和装箱操作date: 2014-10-21 20:20:50
+tags:####NSDictionary ,###NSNumber,###NSNull 
+1 NSDictionary
+1> 创建字典的新语法
+例如：NSDictionary *persons = @{@"zs":p1};
+2> 获取字典中的对象
+例如：Persons *somePerson = persons[@"">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="title: 谓词总结date: 2014-10-20 21:45:54
-tags:谓词小结
-1.">
+<meta name="twitter:description" content="title: 字典和装箱操作date: 2014-10-21 20:20:50
+tags:####NSDictionary ,###NSNumber,###NSNull 
+1 NSDictionary
+1> 创建字典的新语法
+例如：NSDictionary *persons = @{@"zs":p1};
+2> 获取字典中的对象
+例如：Persons *somePerson = persons[@"">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,10 +77,10 @@ tags:谓词小结
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-谓词总结" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-字典和装箱操作" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/10/20/谓词总结/" class="article-date">
-  <time datetime="2014-10-20T13:51:24.000Z" itemprop="datePublished">Oct 20 2014</time>
+    <a href="/2014/10/21/字典和装箱操作/" class="article-date">
+  <time datetime="2014-10-21T13:04:38.000Z" itemprop="datePublished">Oct 21 2014</time>
 </a>
     
   </div>
@@ -77,14 +89,34 @@ tags:谓词小结
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>title: 谓词总结<br>date: 2014-10-20 21:45:54</p>
-<h2 id="tags:谓词小结">tags:谓词小结</h2>
-<h3 id="1-">1.</h3>
-
+        <p>title: 字典和装箱操作<br>date: 2014-10-21 20:20:50</p>
+<h2 id="tags:####NSDictionary_,###NSNumber,###NSNull_">tags:####NSDictionary ,###NSNumber,###NSNull </h2>
+<h2 id="1_NSDictionary">1 NSDictionary</h2>
+<p>1> 创建字典的新语法</p>
+<pre><code>例如：<span class="constant">NSDictionary</span> *persons = @{@<span class="string">"zs"</span><span class="symbol">:p1</span>};
+</code></pre><p>2> 获取字典中的对象</p>
+<pre><code>例如：Persons *somePerson = persons[@<span class="string">"zs"</span>];
+</code></pre><p>3>向可变字典添加和删除对象</p>
+<pre><code>语法：(<span class="number">1</span>)添加
+<span class="keyword">set</span>Object forkey    addEntriesFromDictionary
+     (<span class="number">2</span>)删除
+ removeObjectForKey 
+</code></pre><h2 id="2_NSNumber">2 NSNumber</h2>
+<p>1>装箱 （对基本的数据类型应该是先装箱然后添加到字典里面）</p>
+<pre><code><span class="number">1</span>.NSNumber <span class="variable">*number</span> = [NSnumber numberWithchar:<span class="string">'X'</span>];
+<span class="number">2</span>. number = <span class="variable">@X</span>
+</code></pre><p>2>开箱 (先从字典里面取出对象然后开箱)</p>
+<pre><code><span class="setting">number = <span class="value">dict[@<span class="string">"char"</span>];</span></span>
+<span class="title">[number charValue]</span><span class="comment">;</span>
+</code></pre><h2 id="3_NSNull">3 NSNull</h2>
+<pre><code>NSNull 表示什么也没有，对象为空
+例如:
+[dict <span class="keyword">set</span>Object:[NSNull null] <span class="keyword">for</span>Key:@<span class="string">"Utopia"</span>]    
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/10/20/谓词总结/" data-id="9g5fd2w8yueuasqa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/10/21/字典和装箱操作/" data-id="cnz2cv6vffxdlftv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -93,17 +125,8 @@ tags:谓词小结
     
 <nav id="article-nav">
   
-    <a href="/2014/10/20/通配符小结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/10/20/predicate/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/10/20/通配符小结/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title"></div>
     </a>
